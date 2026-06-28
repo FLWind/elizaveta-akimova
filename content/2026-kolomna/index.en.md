@@ -16,33 +16,37 @@ resources:
   - src: 05.jpg
     title: Courtyard of an 1830 House, 13 Krasnogvardeyskaya Street, Kolomna (Watercolor)
   - src: 06.jpg
-    title: House on Levshina Street (Watercolor)
+    title: Domes of Old Kolomna (Oil Painting)
   - src: 07.jpg
-    title: Industrial Landscape, Patifonka Factory (Watercolor)
+    title: Roofs of Patifonka (Watercolor)
   - src: 08.jpg
-    title: Room (Pen)
+    title: House on Levshina Street (Watercolor)
   - src: 09.jpg
-    title: Medical College (Watercolor)
+    title: Industrial Landscape, Patifonka Factory (Watercolor)
   - src: 10.jpg
-    title: Novo-Golutvin Monastery (Watercolor)
+    title: Room (Pen)
   - src: 11.jpg
-    title: St. Nicholas Church (Watercolor)
+    title: Medical College (Watercolor)
   - src: 12.jpg
-    title: Bus Stop (Watercolor)
+    title: Novo-Golutvin Monastery (Watercolor)
   - src: 13.jpg
-    title: Landscape (Watercolor)
+    title: St. Nicholas Church (Watercolor)
   - src: 14.jpg
-    title: Posadskaya Street (Watercolor)
+    title: Bus Stop (Watercolor)
   - src: 15.jpg
-    title: Two Geese Hostel (Watercolor)
+    title: Landscape (Watercolor)
   - src: 16.jpg
-    title: Moscow River Viewed from the Pontoon Bridge (Watercolor)
+    title: Posadskaya Street (Watercolor)
   - src: 17.jpg
-    title: 12 Pushkina Street (Watercolor)
+    title: Two Geese Hostel (Watercolor)
   - src: 18.jpg
-    title: Tower (Pencil)
+    title: Moscow River Viewed from the Pontoon Bridge (Watercolor)
   - src: 19.jpg
-    title: Car (Pencil)
+    title: 12 Pushkina Street (Watercolor)
   - src: 20.jpg
+    title: Tower (Pencil)
+  - src: 21.jpg
+    title: Car (Pencil)
+  - src: 22.jpg
     title: Art-Kommunalka Sketches (Pen)
 ---
