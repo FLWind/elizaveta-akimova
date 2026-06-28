@@ -2,7 +2,7 @@
 date: 2022-06-01
 title: Foundation Studies (2022)
 sort_by: Name
-categories: ["child"]
+categories: ["early-artwork"]
 resources:
   - src: 01.jpg
     title: Kuskovo Moscow (Watercolor)

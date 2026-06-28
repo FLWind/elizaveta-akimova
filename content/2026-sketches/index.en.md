@@ -1,6 +1,6 @@
 ---
 date: 2026-05-31
-title: Plein-Air Sketches (2026)
+title: Plein Air Sketches (2026)
 sort_by: Name
 categories: ["sketches"]
 resources:

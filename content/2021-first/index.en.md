@@ -2,7 +2,7 @@
 date: 2021-06-01
 title: Early Works (2019-2021)
 sort_by: Name
-categories: ["child"]
+categories: ["early-artwork"]
 resources:
   - src: 01.jpg
     title: Circus (Gouache)
