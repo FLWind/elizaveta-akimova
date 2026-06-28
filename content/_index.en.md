@@ -1,5 +1,5 @@
 ---
-description: Portfolio of Artist Elizaveta Akimova
+description: I am a young artist and a student at Children's Art School No. 7 in Moscow. This portfolio showcases academic studies, plein air paintings, sketches, and personal creative projects.
 #lastmod: 2026-06-27
 title: Elizabeth Akimova
 menus:
