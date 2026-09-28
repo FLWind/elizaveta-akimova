@@ -1,6 +1,6 @@
 ---
 date: 2024-06-01
-title: Академические работы 2 класса (2024)
+title: Академические работы 2-го класса (2024)
 sort_by: Name
 categories: ["academic-studies"]
 resources:
@@ -16,7 +16,7 @@ resources:
   - src: 05.jpg
     title: Дорога в горы (акварель)
   - src: 06.jpg
-    title: Драппировка (сепия)
+    title: Драпировка (сепия)
   - src: 07.jpg
     title: Капибары (мелки)
   - src: 08.jpg

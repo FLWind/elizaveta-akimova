@@ -1,6 +1,6 @@
 ---
 date: 2021-06-01
-title: Первые работы (2019-2021)
+title: Первые работы (2019–2021)
 sort_by: Name
 categories: ["early-artwork"]
 resources:
@@ -10,7 +10,7 @@ resources:
   - src: 02.jpg
     title: Роза (мелки)
   - src: 03.jpg
-    title: 12 месяцев (гуашь)
+    title: Двенадцать месяцев (гуашь)
   - src: 04.jpg
     title: Ветер (гуашь)
   - src: 05.jpg
@@ -24,7 +24,7 @@ resources:
   - src: 09.jpg
     title: Зима (гуашь)
   - src: 10.jpg
-    title: Космонавты на марсе (гуашь)
+    title: Космонавты на Марсе (гуашь)
   - src: 11.jpg
     title: Маяк (гуашь)
   - src: 12.jpg

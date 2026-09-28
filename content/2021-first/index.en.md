@@ -1,6 +1,6 @@
 ---
 date: 2021-06-01
-title: Early Works (2019-2021)
+title: Early Works (2019–2021)
 sort_by: Name
 categories: ["early-artwork"]
 resources:
@@ -30,7 +30,7 @@ resources:
   - src: 12.jpg
     title: Palm Trees (Gouache)
   - src: 13.jpg
-    title: Thawing Patches (Watercolor)
+    title: Patches of Thawing Snow (Watercolor)
   - src: 14.jpg
     title: Sakura (Gouache)
   - src: 15.jpg

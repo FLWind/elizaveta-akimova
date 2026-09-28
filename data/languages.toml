@@ -1,0 +1,9 @@
+[ru]
+baseURL = "https://akimova.ru/"
+name = "Русский"
+locale = "ru_RU"
+
+[en]
+baseURL = "https://akimova.pro/"
+name = "English"
+locale = "en_US"

@@ -1,0 +1,13 @@
+{{- $description := .Description -}}
+{{- if not $description -}}
+  {{- if and .IsPage (not .Content) -}}
+    {{- if eq .Site.Language.Lang "ru" -}}
+      {{- $description = printf "%s — работы Елизаветы Акимовой. Галерея рисунков и художественных работ." .Title -}}
+    {{- else -}}
+      {{- $description = printf "%s — artwork by Elizabeth Akimova. Explore the art portfolio and gallery." .Title -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $description = .Site.Params.description -}}
+  {{- end -}}
+{{- end -}}
+{{- return ($description | markdownify | plainify | htmlUnescape | strings.TrimSpace) -}}

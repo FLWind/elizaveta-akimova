@@ -8,7 +8,7 @@ resources:
     title: Голубятня (акварель)
     cover: true
   - src: 02.jpg
-    title: Пруд с ивами (пастэль)
+    title: Пруд с ивами (пастель)
   - src: 03.jpg
     title: Сибирская ель (пастель)
   - src: 04.jpg

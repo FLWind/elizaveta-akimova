@@ -12,7 +12,7 @@ resources:
   - src: 03.jpg
     title: Ascension Church (Watercolor)
   - src: 04.jpg
-    title: Trinity Church in Byzantine Style (Oil Painting)
+    title: Trinity Church in the Byzantine Style (Oil Painting)
   - src: 05.jpg
     title: Courtyard of an 1830 House, 13 Krasnogvardeyskaya Street, Kolomna (Watercolor)
   - src: 06.jpg
@@ -36,7 +36,7 @@ resources:
   - src: 15.jpg
     title: Landscape (Watercolor)
   - src: 16.jpg
-    title: Posadskaya Street (Watercolor)
+    title: 2 Posadskaya Street (Watercolor)
   - src: 17.jpg
     title: Two Geese Hostel (Watercolor)
   - src: 18.jpg
@@ -48,5 +48,5 @@ resources:
   - src: 21.jpg
     title: Car (Pencil)
   - src: 22.jpg
-    title: Art-Kommunalka Sketches (Pen)
+    title: Sketches at Art-Kommunalka (Pen)
 ---

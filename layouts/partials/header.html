@@ -1,0 +1,28 @@
+{{- $ru := eq .Site.Language.Lang "ru" -}}
+<header class="site-header">
+  <a class="site-brand" href="{{ .Site.Home.RelPermalink }}">
+    <img src="{{ "favicon.svg" | relURL }}" width="44" height="44" alt="" />
+    <span>{{ .Site.Params.author.name }}</span>
+  </a>
+  <nav class="site-nav" aria-label="{{ if $ru }}Основная навигация{{ else }}Main navigation{{ end }}">
+    {{ range .Site.Menus.main }}
+      <a href="{{ .URL }}"{{ if or ($.IsMenuCurrent .Menu .) ($.HasMenuCurrent .Menu .) }} aria-current="page"{{ end }}>{{ .Name }}</a>
+    {{ end }}
+  </nav>
+  <nav class="language-nav" aria-label="{{ if $ru }}Язык сайта{{ else }}Site language{{ end }}">
+    {{- $versions := partial "language-versions.html" . -}}
+    {{- if not $versions -}}
+      {{- range $code := slice "ru" "en" -}}
+        {{- $language := index site.Data.languages $code -}}
+        {{- $versions = $versions | append (dict "code" $code "name" $language.name "url" $language.baseURL) -}}
+      {{- end -}}
+    {{- end -}}
+    {{ range $versions }}
+      {{ if eq .code $.Site.Language.Lang }}
+        <span class="current-language" lang="{{ .code }}" aria-label="{{ .name }}" aria-current="true">{{ upper .code }}</span>
+      {{ else }}
+        <a href="{{ .url }}" lang="{{ .code }}" hreflang="{{ .code }}" rel="alternate" aria-label="{{ .name }}">{{ upper .code }}</a>
+      {{ end }}
+    {{ end }}
+  </nav>
+</header>

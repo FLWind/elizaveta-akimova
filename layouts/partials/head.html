@@ -1,0 +1,45 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ with .Title }}{{ . }} -{{ end }} {{ .Site.Title }}</title>
+  <link rel="canonical" href="{{ .Permalink }}" />
+  {{ partial "language-alternates.html" . }}
+  <link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="16x16 32x32 48x48" />
+  <link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}" sizes="any" />
+  <link rel="icon" type="image/png" href="{{ "favicon-96x96.png" | relURL }}" sizes="96x96" />
+  <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}" sizes="180x180" />
+  <link rel="manifest" href="{{ "site.webmanifest" | relURL }}" />
+  <meta name="theme-color" content="#171923" />
+  <meta name="apple-mobile-web-app-title" content="{{ .Site.Params.author.name }}" />
+  <meta name="author" content="{{ .Site.Params.author.name }}" />
+  <meta name="description" content="{{ partial "description.html" . }}" />
+  {{ if .Params.keywords }}
+    <meta name="keywords" content="{{ delimit .Params.keywords `, ` }}" />
+  {{ end }}
+  {{ if or .Params.private (eq .Kind "404") }}
+    <meta name="robots" content="noindex, nofollow" />
+  {{ else }}
+    <meta name="robots" content="index, follow" />
+  {{ end }}
+  {{ range .AlternativeOutputFormats -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  {{ end -}}
+  {{ partial "opengraph.html" . }}
+  {{ $css := resources.Get "/css/main.scss" | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" />
+  {{ $params := dict
+    "closeTitle" (i18n "closeTitle")
+    "zoomTitle" (i18n "zoomTitle")
+    "arrowPrevTitle" (i18n "arrowPrevTitle")
+    "arrowNextTitle" (i18n "arrowNextTitle")
+    "errorMsg" (i18n "errorMsg")
+    "downloadTitle" (i18n "downloadTitle")
+    "boxSpacing" (default 8 .Site.Params.gallery.boxSpacing)
+    "targetRowHeight" (default 288 .Site.Params.gallery.targetRowHeight)
+    "targetRowHeightTolerance" (default 0.25 .Site.Params.gallery.targetRowHeightTolerance)
+    "enableDownload" (default true .Params.build.publishResources)
+  }}
+  {{ $js := resources.Get "js/main.js" | js.Build (dict "minify" true "params" $params) | resources.Fingerprint }}
+  <script src="{{ $js.RelPermalink }}" defer></script>
+  {{- partial "head-custom.html" . -}}
+</head>

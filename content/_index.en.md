@@ -4,7 +4,7 @@ description: I am a young artist and a student at Children's Art School No. 7 in
 title: Elizabeth Akimova
 menus:
   main:
-    name: Main
+    name: Home
     weight: -1
 # sub-galleries on list pages are sorted by date and weight (descending)
 #cascade:

@@ -5,7 +5,7 @@ sort_by: Name
 categories: ["early-artwork"]
 resources:
   - src: 01.jpg
-    title: Kuskovo Moscow (Watercolor)
+    title: Kuskovo, Moscow (Watercolor)
     cover: true
   - src: 02.jpg
     title: Vase (Crayons)
@@ -20,7 +20,7 @@ resources:
   - src: 07.jpg
     title: Mug (Watercolor)
   - src: 08.jpg
-    title: Elizabeth name in Russian (Watercolor)
+    title: Liza (My Name in Russian) (Watercolor)
   - src: 09.jpg
     title: Autumn Forest (Gouache)
   - src: 10.jpg

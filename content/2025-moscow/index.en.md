@@ -8,5 +8,5 @@ resources:
     title: Moscow Kremlin (Oil Painting)
     cover: true
   - src: 02.jpg
-    title: Krutitsy Podvorie Moscow (Oil Painting)
+    title: Krutitsy Metochion, Moscow (Oil Painting)
 ---

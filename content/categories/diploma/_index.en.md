@@ -1,4 +1,4 @@
 ---
-title: Diploma Projects
-description: Final diploma projects created during studies at art school
+title: Graduation Projects
+description: Final projects created at art school
 ---

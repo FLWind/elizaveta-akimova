@@ -1,0 +1,16 @@
+{{- /* The domains are built separately, so Hugo's .Translations is empty.
+     Paired content files share a URL path. Only advertise existing translations.
+     scripts/check_site.py verifies the resulting reciprocal URLs after building. */ -}}
+{{- $versions := slice -}}
+{{- if and .File (ne .Kind "404") (not .Params.private) -}}
+  {{- $page := . -}}
+  {{- range $code := slice "ru" "en" -}}
+    {{- $file := printf "content/%s%s.%s.md" $page.File.Dir $page.File.TranslationBaseName $code -}}
+    {{- if os.FileExists $file -}}
+      {{- $language := index site.Data.languages $code -}}
+      {{- $url := printf "%s%s" $language.baseURL (strings.TrimPrefix "/" $page.RelPermalink) -}}
+      {{- $versions = $versions | append (dict "code" $code "name" $language.name "locale" $language.locale "url" $url) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $versions -}}

@@ -24,7 +24,7 @@ resources:
   - src: 09.jpg
     title: Ice Skates (Watercolor)
   - src: 10.jpg
-    title: Kettle (Gouache)
+    title: Cooking Pot (Gouache)
   - src: 11.jpg
     title: Mug (Oil Painting)
   - src: 12.jpg

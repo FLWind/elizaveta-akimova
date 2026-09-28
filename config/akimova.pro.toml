@@ -1,3 +1,4 @@
+baseURL = "https://akimova.pro/"
 copyright = "© Elizabeth Akimova"
 defaultContentLanguage = "en"
 disableLanguages = ["ru"]
@@ -12,7 +13,7 @@ publishDir = "public/akimova.pro"
 
 [params]
   defaultTheme = "dark"
-  description = "Portfolio of Artist Elizaveta Akimova"
+  description = "Art portfolio of Elizabeth Akimova"
   title = "Gallery of My Works"
   [params.author]
     email = "elizabeth@akimova.pro"
