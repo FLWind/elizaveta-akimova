@@ -19,6 +19,8 @@ resources:
     title: Figure Sketches (Pencil)
   - src: 07.jpg
     title: Figure Sketches (Pencil)
+  - src: 08.jpg
+    title: Figure Sketches (Pencil)
   - src: 09.jpg
     title: Figure Sketches (Pencil)
 ---

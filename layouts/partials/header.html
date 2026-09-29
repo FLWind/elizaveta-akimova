@@ -1,27 +1,26 @@
-{{- $ru := eq .Site.Language.Lang "ru" -}}
 <header class="site-header">
   <a class="site-brand" href="{{ .Site.Home.RelPermalink }}">
     <img src="{{ "favicon.svg" | relURL }}" width="44" height="44" alt="" />
     <span>{{ .Site.Params.author.name }}</span>
   </a>
-  <nav class="site-nav" aria-label="{{ if $ru }}Основная навигация{{ else }}Main navigation{{ end }}">
+  <nav class="site-nav" aria-label="{{ i18n "mainNavigation" }}">
     {{ range .Site.Menus.main }}
       <a href="{{ .URL }}"{{ if or ($.IsMenuCurrent .Menu .) ($.HasMenuCurrent .Menu .) }} aria-current="page"{{ end }}>{{ .Name }}</a>
     {{ end }}
   </nav>
-  <nav class="language-nav" aria-label="{{ if $ru }}Язык сайта{{ else }}Site language{{ end }}">
+  <nav class="language-nav" aria-label="{{ i18n "siteLanguage" }}">
     {{- $versions := partial "language-versions.html" . -}}
     {{- if not $versions -}}
-      {{- range $code := slice "ru" "en" -}}
+      {{- range $code := slice "ru" "en" "zh" -}}
         {{- $language := index site.Data.languages $code -}}
-        {{- $versions = $versions | append (dict "code" $code "name" $language.name "url" $language.baseURL) -}}
+        {{- $versions = $versions | append (dict "code" $code "tag" $language.tag "name" $language.name "label" $language.label "url" $language.baseURL) -}}
       {{- end -}}
     {{- end -}}
     {{ range $versions }}
       {{ if eq .code $.Site.Language.Lang }}
-        <span class="current-language" lang="{{ .code }}" aria-label="{{ .name }}" aria-current="true">{{ upper .code }}</span>
+        <span class="current-language" lang="{{ .tag }}" aria-label="{{ .name }}" aria-current="true">{{ .label }}</span>
       {{ else }}
-        <a href="{{ .url }}" lang="{{ .code }}" hreflang="{{ .code }}" rel="alternate" aria-label="{{ .name }}">{{ upper .code }}</a>
+        <a href="{{ .url }}" lang="{{ .tag }}" hreflang="{{ .tag }}" rel="alternate" aria-label="{{ .name }}">{{ .label }}</a>
       {{ end }}
     {{ end }}
   </nav>

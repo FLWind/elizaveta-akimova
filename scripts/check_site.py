@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check both production builds before rclone sync. Python standard library only."""
+"""Check all three production builds before rclone sync. Standard library only."""
 from html.parser import HTMLParser
 import json
 from pathlib import Path
@@ -7,7 +7,9 @@ import sys
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-DOMAINS = {"ru": "akimova.ru", "en": "akimova.pro"}
+DOMAINS = {"ru": "akimova.ru", "en": "akimova.pro", "zh": "akimova.asia"}
+HTML_LANGUAGES = {"ru": "ru-RU", "en": "en-US", "zh": "zh-CN"}
+HREFLANGS = {"ru": "ru", "en": "en", "zh": "zh-CN"}
 ICONS = (
     "favicon.svg", "favicon.ico", "favicon-16x16.png", "favicon-32x32.png",
     "favicon-48x48.png", "favicon-96x96.png", "apple-touch-icon.png",
@@ -75,7 +77,7 @@ def check():
             document = Document(path.read_text())
             label = f"{domain}{route}"
             html = [a for tag, a, _ in document.elements if tag == "html"]
-            require(len(html) == 1 and html[0].get("lang", "").split("-")[0] == language,
+            require(len(html) == 1 and html[0].get("lang") == HTML_LANGUAGES[language],
                     f"Incorrect HTML language: {label}")
             canonical = document.links("canonical")
             require(len(canonical) == 1 and canonical[0].get("href") == f"https://{domain}{route}",
@@ -95,6 +97,19 @@ def check():
                 require(f"https://{domain}{route}" in locations, f"Missing sitemap URL: {label}")
                 pages[language][route] = (document, alternate_map)
 
+            if language == "zh":
+                require(any(tag == "meta" and attrs.get("name") == "author" and
+                            attrs.get("content") == "Elizabeth Akimova"
+                            for tag, attrs, _ in document.elements),
+                        f"Incorrect Chinese-site author: {label}")
+                require(any(tag == "a" and attrs.get("href") == "mailto:elizabeth@akimova.pro"
+                            for tag, attrs, _ in document.elements),
+                        f"Incorrect Chinese-site email: {label}")
+                for tag, attrs, _ in document.elements:
+                    if tag == "a" and "gallery-item" in attrs.get("class", "").split():
+                        require(any("\u4e00" <= c <= "\u9fff" for c in attrs.get("title", "")),
+                                f"Missing Chinese artwork caption: {label} {attrs.get('href')}")
+
             # Check local navigation and assets, including favicon/CSS/JS/image URLs.
             for tag, attrs, _ in document.elements:
                 for attribute in ("src", "href"):
@@ -108,16 +123,19 @@ def check():
                             f"Broken local {attribute} in {label}: {value}")
 
     # Translation paths must match; do not silently advertise missing pages.
-    require(pages["ru"].keys() == pages["en"].keys(), "RU/EN page paths differ")
+    for language in DOMAINS:
+        require(pages["ru"].keys() == pages[language].keys(), f"RU/{language} page paths differ")
     for language, documents in pages.items():
-        other = "en" if language == "ru" else "ru"
         for route, (document, alternate_map) in documents.items():
-            expected = {code: f"https://{domain}{route}" for code, domain in DOMAINS.items()}
+            expected = {HREFLANGS[code]: f"https://{domain}{route}"
+                        for code, domain in DOMAINS.items()}
             expected["x-default"] = expected["en"]
             require(alternate_map == expected, f"Incorrect hreflang: {language}{route}")
-            require(any(tag == "a" and attrs.get("hreflang") == other and
-                        attrs.get("href") == expected[other] for tag, attrs, _ in document.elements),
-                    f"Missing language switch: {language}{route}")
+            for other in DOMAINS.keys() - {language}:
+                require(any(tag == "a" and attrs.get("hreflang") == HREFLANGS[other] and
+                            attrs.get("href") == expected[HREFLANGS[other]]
+                            for tag, attrs, _ in document.elements),
+                        f"Missing {other} language switch: {language}{route}")
     print(f"OK: {sum(map(len, pages.values()))} pages; canonical, hreflang, language switches, "
           "local links, icons, manifests, sitemaps and robots.txt.")
 

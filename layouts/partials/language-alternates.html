@@ -1,5 +1,5 @@
 {{- range partial "language-versions.html" . }}
-  <link rel="alternate" hreflang="{{ .code }}" href="{{ .url }}" />
+  <link rel="alternate" hreflang="{{ .tag }}" href="{{ .url }}" />
   {{- if eq .code "en" }}
   <link rel="alternate" hreflang="x-default" href="{{ .url }}" />
   {{- end }}

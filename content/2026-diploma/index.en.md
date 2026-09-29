@@ -11,14 +11,14 @@ resources:
     title: Academic Drawing (Sepia)
   - src: 03.jpg
     title: Academic Painting (Gouache)
-  - src: 04.jpg
+  - src: 04.JPG
     title: Swallows (Sculpture)
-  - src: 05.jpg
+  - src: 05.JPG
     title: Swallows (Sculpture)
-  - src: 06.jpg
+  - src: 06.JPG
     title: Swallows (Sculpture)
-  - src: 07.jpg
+  - src: 07.JPG
     title: Swallows (Sculpture)
-  - src: 08.jpg
+  - src: 08.JPG
     title: Swallows (Sculpture)
 ---

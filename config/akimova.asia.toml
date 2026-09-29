@@ -1,0 +1,41 @@
+baseURL = "https://akimova.asia/"
+copyright = "© Elizabeth Akimova"
+defaultContentLanguage = "zh"
+disableLanguages = ["ru", "en"]
+disableKinds = ["taxonomy"]
+enableRobotsTXT = true
+languageCode = "zh-CN"
+hasCJKLanguage = true
+timeZone = "Europe/Moscow"
+timeout = "120s"
+title = "艺术作品集"
+theme = "gallery"
+publishDir = "public/akimova.asia"
+
+[params]
+  defaultTheme = "dark"
+  description = "Elizabeth Akimova 的艺术作品集，展示美术基础习作、户外写生、速写和个人创作。"
+  title = "我的艺术作品"
+  [params.author]
+    email = "elizabeth@akimova.pro"
+    name = "Elizabeth Akimova"
+  [params.socialIcons]
+    email = "mailto:elizabeth@akimova.pro"
+    website = "https://akimova.asia"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  page = ["HTML"]
+  section = ["HTML"]
+
+[imaging]
+  quality = 75
+  resampleFilter = "CatmullRom"
+  [imaging.exif]
+    disableDate = false
+    disableLatLong = true
+    includeFields = "ImageDescription|Orientation"
+
+[services]
+  [services.rss]
+    limit = 100

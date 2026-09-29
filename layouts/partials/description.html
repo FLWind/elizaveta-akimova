@@ -3,6 +3,8 @@
   {{- if and .IsPage (not .Content) -}}
     {{- if eq .Site.Language.Lang "ru" -}}
       {{- $description = printf "%s — работы Елизаветы Акимовой. Галерея рисунков и художественных работ." .Title -}}
+    {{- else if eq .Site.Language.Lang "zh" -}}
+      {{- $description = printf "%s：Elizabeth Akimova 的艺术作品。浏览绘画、素描与个人创作作品集。" .Title -}}
     {{- else -}}
       {{- $description = printf "%s — artwork by Elizabeth Akimova. Explore the art portfolio and gallery." .Title -}}
     {{- end -}}

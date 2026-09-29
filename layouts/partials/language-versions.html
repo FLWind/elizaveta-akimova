@@ -4,12 +4,12 @@
 {{- $versions := slice -}}
 {{- if and .File (ne .Kind "404") (not .Params.private) -}}
   {{- $page := . -}}
-  {{- range $code := slice "ru" "en" -}}
+  {{- range $code := slice "ru" "en" "zh" -}}
     {{- $file := printf "content/%s%s.%s.md" $page.File.Dir $page.File.TranslationBaseName $code -}}
     {{- if os.FileExists $file -}}
       {{- $language := index site.Data.languages $code -}}
       {{- $url := printf "%s%s" $language.baseURL (strings.TrimPrefix "/" $page.RelPermalink) -}}
-      {{- $versions = $versions | append (dict "code" $code "name" $language.name "locale" $language.locale "url" $url) -}}
+      {{- $versions = $versions | append (dict "code" $code "tag" $language.tag "name" $language.name "label" $language.label "locale" $language.locale "url" $url) -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}

@@ -6,6 +6,10 @@ Hugo + тема [Gallery](https://github.com/nicokaiser/hugo-theme-gallery), з�
 | --- | --- | --- | --- | --- |
 | Русский | https://akimova.ru/ | `config/akimova.ru.toml` | `public/akimova.ru/` | `akimova-ru:` |
 | English | https://akimova.pro/ | `config/akimova.pro.toml` | `public/akimova.pro/` | `akimova-en:` |
+| 简体中文 | https://akimova.asia/ | `config/akimova.asia.toml` | `public/akimova.asia/` | `akimova-cn:` |
+
+Китайская версия использует упрощённые иероглифы (`zh-CN`). Имя автора —
+**Elizabeth Akimova**, почта — **elizabeth@akimova.pro**, как в английской версии.
 
 ## Fedora / Linux
 
@@ -32,10 +36,11 @@ git submodule update --init --recursive
 ### Сборка
 
 ```bash
-./build.sh          # обе версии
+./build.sh          # все три версии
 ./build.sh ru       # только akimova.ru
 ./build.sh en       # только akimova.pro
-python3 scripts/check_site.py  # проверка обеих готовых production-сборок
+./build.sh cn       # только akimova.asia (также поддерживается ./build.sh zh)
+python3 scripts/check_site.py  # проверка всех трёх готовых production-сборок
 ```
 
 Скрипт работает из любой текущей папки. Устаревшие файлы внутри каталога
@@ -46,6 +51,7 @@ python3 scripts/check_site.py  # проверка обеих готовых prod
 ```bash
 ./akimova.ru.sh     # http://localhost:10013/
 ./akimova.pro.sh    # http://localhost:10014/
+./akimova.asia.sh   # http://localhost:10015/
 ```
 
 Дополнительные параметры Hugo можно передать скрипту, например `./akimova.ru.sh --buildDrafts`.
@@ -54,7 +60,7 @@ Hugo server использует локальные URL.
 
 ### Публикация
 
-Создайте в `rclone config` подключения **akimova-ru** и **akimova-en**.
+Создайте в `rclone config` подключения **akimova-ru**, **akimova-en** и **akimova-cn**.
 Корень каждого подключения должен указывать непосредственно на web-root
 соответствующего домена, куда нужно положить `index.html`.
 Пароли и настройки подключений хранятся в локальной конфигурации rclone, не в Git.
@@ -62,31 +68,37 @@ Hugo server использует локальные URL.
 ```bash
 ./build.sh
 ./publish.sh --dry-run   # показать план без изменения файлов на хостинге
-./publish.sh             # опубликовать оба сайта
+./publish.sh             # опубликовать все три сайта
 ```
 
-`publish.sh` сначала проверяет обе сборки, ссылки языковых версий, иконки и наличие
-обоих подключений. Затем выполняет `rclone sync --delete-after`:
+`publish.sh` сначала проверяет все три сборки, ссылки языковых версий, иконки и наличие
+всех трёх подключений. Затем выполняет `rclone sync --delete-after`:
 файлы, отсутствующие в локальной сборке, удаляются с хостинга после передачи.
 Служебные каталоги `cgi-bin/` и `.well-known/` исключены из синхронизации и удаления.
-Синхронизации последовательные: при сетевой ошибке второй сайт может остаться
+Синхронизации последовательные: при сетевой ошибке следующие сайты могут остаться
 на предыдущей версии; после устранения ошибки повторите публикацию.
 
-Windows-скрипты `build.cmd`, `akimova.ru.cmd`, `akimova.pro.cmd` также сохранены.
+Windows-скрипт `build.cmd` собирает все три версии. Для локального просмотра есть
+`akimova.ru.cmd`, `akimova.pro.cmd` и `akimova.asia.cmd`.
 
 ## Языковые версии и метаданные
 
 Каждый сайт имеет собственный `baseURL` и canonical на своём домене.
-В `<head>` опубликованы взаимные `hreflang="ru"` и `hreflang="en"`, включая ссылку
+В `<head>` опубликованы взаимные `hreflang="ru"`, `hreflang="en"` и `hreflang="zh-CN"`, включая ссылку
 на текущую версию. `x-default` указывает на английскую страницу. В шапке есть
-переключатель RU / EN, сохраняющий текущую страницу.
+переключатель RU / EN / 中文, сохраняющий текущую страницу.
 
 Сборки раздельные, поэтому `.Translations` Hugo недоступен. Соответствия определяются
-по парным файлам `index.ru.md` / `index.en.md`, `_index.ru.md` / `_index.en.md`
-и `about.ru.md` / `about.en.md`. **URL-путь парных страниц должен совпадать**:
+по файлам с одинаковым именем и языковыми суффиксами: `index.ru.md` / `index.en.md` /
+`index.zh.md`, аналогично для `_index` и `about`. Китайский язык в Hugo обозначен
+ключом `zh`, а HTML и hreflang используют `zh-CN`. **URL-путь переводов должен совпадать**:
 не задавайте разные `slug` или `url` для переводов. Домены и локали хранятся в
 `data/languages.toml`; при смене домена обновите также соответствующий `baseURL`
 и таблицу `DOMAINS` в `scripts/check_site.py`.
+
+Подписи кнопок, счётчиков и навигации переведены через `i18n/`. Китайские подписи
+изображений находятся в `resources` соответствующего `index.zh.md`. Изображения
+общие для всех языков; добавляя работу, укажите её подпись во всех трёх файлах.
 
 Проверка перед публикацией выявляет отсутствие перевода, несовпадающие пути,
 неверные canonical/hreflang, сломанные локальные ссылки и отсутствие иконок.

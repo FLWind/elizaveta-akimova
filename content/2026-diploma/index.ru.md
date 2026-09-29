@@ -11,14 +11,14 @@ resources:
     title: Рисунок (сепия)
   - src: 03.jpg
     title: Живопись (гуашь)
-  - src: 04.jpg
+  - src: 04.JPG
     title: Ласточки (скульптура)
-  - src: 05.jpg
+  - src: 05.JPG
     title: Ласточки (скульптура)
-  - src: 06.jpg
+  - src: 06.JPG
     title: Ласточки (скульптура)
-  - src: 07.jpg
+  - src: 07.JPG
     title: Ласточки (скульптура)
-  - src: 08.jpg
+  - src: 08.JPG
     title: Ласточки (скульптура)
 ---

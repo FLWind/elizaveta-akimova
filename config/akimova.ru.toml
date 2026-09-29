@@ -1,7 +1,7 @@
 baseURL = "https://akimova.ru/"
 copyright = "© Акимова Елизавета"
 defaultContentLanguage = "ru"
-disableLanguages = ["en"]
+disableLanguages = ["en", "zh"]
 disableKinds = ["taxonomy"]
 enableRobotsTXT = true
 languageCode = "ru-RU"

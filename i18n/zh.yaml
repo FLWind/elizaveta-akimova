@@ -1,0 +1,17 @@
+mainNavigation: 主导航
+siteLanguage: 网站语言
+menu: 菜单
+home: 首页
+pageNotFound: 页面不存在
+toHomepage: 返回首页
+closeTitle: 关闭
+zoomTitle: 缩放
+arrowPrevTitle: 上一张
+arrowNextTitle: 下一张
+errorMsg: 图片无法加载
+downloadTitle: 下载
+relatedAlbums: 相关作品集
+photoCount:
+  other: "{{ . }} 张作品图片"
+albumCount:
+  other: "{{ .count }} 个作品集，共 {{ .photoCount }}"
